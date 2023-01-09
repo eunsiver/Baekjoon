@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -9,16 +10,7 @@ public class Main {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		String[] s = br.readLine().split(" ");
-		int c = 0;
-
-		// System.out.println(c);
-		for (String r : s) {
-			if (!r.isBlank()) {
-				c++;
-			}
-
-		}
-		System.out.println(c);
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		System.out.println(st.countTokens());
 	}
 }
