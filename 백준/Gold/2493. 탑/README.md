@@ -1,6 +1,7 @@
 # [Gold V] 탑 - 2493 
 
 [문제 링크](https://www.acmicpc.net/problem/2493) 
+[참고](https://st-lab.tistory.com/196) - 오큰 수와 동일
 
 ### 성능 요약
 
