@@ -3,20 +3,14 @@ import java.io.*;
 class Solution {
     public int solution(int[] array, int n) {
        
-        TreeSet<Integer> t= new TreeSet<>();
-        int di=Integer.MAX_VALUE;
-        for(int i=0;i<array.length;i++){
-            int ne=Math.abs(n-array[i]);
-            di=ne<di?ne:di;
-            
+        int answer=0;
+        //가장 작은 수를 출력할 수 있도록 하기
+        //위해서 먼저 정렬
+        Arrays.sort(array);
+        for(int i=1;i<array.length;i++){
+            if(Math.abs(n-array[0])>Math.abs(n-array[i])) array[0]=array[i];
         }
-        for(int i=0;i<array.length;i++){
-            int ne=Math.abs(n-array[i]);
-            if(di==ne){
-                t.add(array[i]);
-            }
-            
-        }
-        return t.first();
+        answer=array[0];
+        return answer;
     }
 }
