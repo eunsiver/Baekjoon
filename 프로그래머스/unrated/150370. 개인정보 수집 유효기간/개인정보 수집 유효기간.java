@@ -13,15 +13,13 @@ class Solution {
             map.put(s[0],s[1]);
         }
         int todaySum=getSum(today);
-         //System.out.println(todaySum);
-        // System.out.println();
+        
         for(int i=0;i<privacies.length;i++){
             sum=0;
             s=privacies[i].split(" ");
             int n=Integer.parseInt(map.get(s[1]));
             
             sum=getSum(s[0])+n*28;
-            // System.out.println(sum);
             if(todaySum>=sum){
                 ar.add(i+1);
             }
