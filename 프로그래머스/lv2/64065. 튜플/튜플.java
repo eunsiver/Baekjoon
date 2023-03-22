@@ -1,29 +1,27 @@
 import java.util.*;
 class Solution {
     public int[] solution(String s) {
-
-        s=s.substring(1,s.length()-1);
-        String ss[]=s.split("},");
-        for(int i=0;i<ss.length;i++){
-            ss[i]=ss[i].replace("{","");
-            ss[i]=ss[i].replace("}","");
-        }
-        LinkedHashSet<Integer> l=new LinkedHashSet<>();
-        Arrays.sort(ss,(o1,o2)->o1.length()-o2.length());
+        int[] answer = {};
         
-         for(int i=0;i<ss.length;i++){
-             String sn[]=ss[i].split(",");
-             for(int j=0;j<sn.length;j++){
-                 l.add(Integer.parseInt(sn[j]));
-             }
-             
-         }
-       /// for(String si:ss)
-       int[] primitive = l.stream()
-                            .mapToInt(i->i)
-                            .toArray();
-       /// Integer[] arr = l.toArray(new Integer[0]);
+        String [] ar= s.substring(2,s.length()-2).replaceAll("[{}]"," ").split(" , ");
+        
+        
+        //길이 순대로 정렬
+        Arrays.sort(ar,(o1,o2)-> o1.length()-o2.length());
+        
+        //set에 집어 넣으면 끝!
+        Set<Integer> sett=new LinkedHashSet<>();
+        
+        for(int i=0;i<ar.length;i++){
+            String [] check=ar[i].split(",");
+            for(int j=0;j<check.length;j++){
+                sett.add(Integer.parseInt(check[j]));
+            }
+            
+        }
+        
        
-        return primitive;
+        answer=sett.stream().mapToInt(i->i).toArray();
+        return  answer;
     }
 }
