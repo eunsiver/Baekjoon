@@ -7,7 +7,10 @@ class Solution {
         for(int i=1;i<=n;i++){
             
             sum=i;
-            if(sum==n)count++;
+            if(sum==n){
+                count++;
+                break;
+            }
             
             for(int j=i+1;j<=n;j++){
                 
