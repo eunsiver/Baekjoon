@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String [] args) throws IOException {
@@ -15,18 +17,15 @@ public class Main {
         int setN=Integer.parseInt(a[0]);
         int checkN=Integer.parseInt(a[1]);
 
+        Map<String, Integer> map=new HashMap<>();
+
         for(int i=0;i<setN;i++){
-            set.add(br.readLine());
+            map.put(br.readLine(),0);
         }
-
         int count=0;
-
         for(int i=0;i<checkN;i++){
-            if(set.contains(br.readLine())){
-                count++;
-            }
+            if(map.containsKey(br.readLine()))count++;
         }
         System.out.println(count);
-      
     }
 }
