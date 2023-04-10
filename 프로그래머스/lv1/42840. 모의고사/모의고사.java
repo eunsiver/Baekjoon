@@ -1,32 +1,38 @@
 import java.util.*;
 class Solution {
+    
+    int []a={1,2,3,4,5};
+    int []b={2,1,2,3,2,4,2,5};
+    int []c={3,3,1,1,2,2,4,4,5,5};
+    
+    int x=0,y=0,z=0;
+    
+    //반복하면서 각자 맞았는지 확인 
+    //맞으면 count++
+    //Max값을 구해서 같으면 배열에 넣기
+    
     public int[] solution(int[] answers) {
-        
-        int []a={1,2,3,4,5};
-        int []b={2,1,2,3,2,4,2,5};
-        int []c={3,3,1,1,2,2,4,4,5,5};
-        int ac=0,bc=0,cc=0;
+    
+        int [] result=new int [3];
         
         for(int i=0;i<answers.length;i++){
-            if(a[i%5]==answers[i]) ac++;
-            if(b[i%8]==answers[i]) bc++;
-            if(c[i%10]==answers[i])cc++;
+            if(answers[i]==a[i%5])
+                x++;
+            if(answers[i]==b[i%8])
+                y++;
+            if(answers[i]==c[i%10])
+                z++;
         }
+        int max=Math.max(Math.max(x,y),z);
+        int k=0;
+      
+            if(max==x)
+                result[k++]=1;
+            if(max==y)
+                result[k++]=2;
+            if(max==z)
+                result[k++]=3;
         
-        System.out.println(ac+" "+bc+" "+cc);
-        int max=Math.max(Math.max(ac,bc),cc);
-        
-        List<Integer> list = new ArrayList<>();
-        
-        if(max == ac)
-            list.add(1);
-        if(max == bc)
-            list.add(2);
-        if(max == cc)
-            list.add(3);
-        
-        
-       
-        return list.stream().mapToInt(i->i).toArray();
+        return Arrays.stream(result).filter(i->i!=0).toArray();
     }
 }
