@@ -6,31 +6,31 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+        Stack<Integer> stack= new Stack<>();
 
-        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        int n=Integer.parseInt(br.readLine());
+        int n= Integer.parseInt(br.readLine());
         int ar[]=new int[n];
-        Stack<Integer>st=new Stack<>();
-        StringTokenizer sToken=new StringTokenizer(br.readLine());
-        for(int i=0;i<n;i++){
-            ar[i]=Integer.parseInt(sToken.nextToken());
-        }
-        int k=n-1;
-        for(int i=n-1;i>=0;i--){
 
-            while(!st.isEmpty()&&ar[st.peek()]<ar[i]){
-                ar[st.pop()]=i+1;
-            }
-            st.push(i);
+        StringTokenizer st=new StringTokenizer(br.readLine());
+        for (int i = 0; i <n ; i++) {
+            ar[i]= Integer.parseInt(st.nextToken());
         }
-        for(int o:st){
-            ar[o]=0;
+        for (int i = n-1; i >=0 ; i--) {
+
+            while(!stack.isEmpty()&&ar[stack.peek()]<ar[i]){
+                ar[stack.pop()]=i+1;
+            }
+            stack.push(i);
+        }
+        for(int i: stack){
+            ar[i]=0;
         }
         StringBuilder sb=new StringBuilder();
-        for(int i:ar){
-            sb.append(i+" ");
 
+        for(int i: ar){
+            sb.append(i+" ");
         }
-        System.out.print(sb);
+        System.out.println(sb);
     }
 }

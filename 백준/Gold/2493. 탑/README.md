@@ -2,15 +2,13 @@
 
 [문제 링크](https://www.acmicpc.net/problem/2493) 
 
-[참고](https://st-lab.tistory.com/196) - 오큰 수와 동일
-
 ### 성능 요약
 
-메모리: 96052 KB, 시간: 916 ms
+메모리: 96620 KB, 시간: 800 ms
 
 ### 분류
 
-자료 구조(data_structures), 스택(stack)
+자료 구조, 스택
 
 ### 문제 설명
 
