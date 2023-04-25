@@ -26,8 +26,8 @@ public class Main {
         }
         int sum=0;
         for(int i=1;i<=6;i++){
-            sum+=team[i][0]/capacity+team[i][0]%2;
-            sum+=team[i][1]/capacity+team[i][1]%2;
+            sum+=team[i][0]/capacity+team[i][0]%capacity;
+            sum+=team[i][1]/capacity+team[i][1]%capacity;
         }
         //System.out.println(Arrays.deepToString(team));
         System.out.println(sum);
