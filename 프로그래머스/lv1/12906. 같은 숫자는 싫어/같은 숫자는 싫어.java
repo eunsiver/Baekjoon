@@ -4,20 +4,13 @@ public class Solution {
     public int[] solution(int []arr) {
         ArrayList<Integer> ar= new ArrayList<>();
         
-        Stack<Integer> st= new Stack<>();
+        int k=10;
         
-        for(int i=arr.length-1;i>=0;i--){
-            st.push(arr[i]);
+        for(int e:arr){
+            
+            if(e!=k) ar.add(e);
+            k=e;
         }
-        int k=0;
-        while(!st.isEmpty()){
-            int el= st.pop();
-            ar.add(el);
-            while(!st.isEmpty()&&st.peek()==el){
-                st.pop();
-            }
-        }
-
         return ar.stream().mapToInt(i->i).toArray();
     }
 }
