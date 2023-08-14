@@ -1,40 +1,36 @@
-public class Solution {
+class Solution {
+    static int[] answer;
     
-    private static class Count{
-            public final int zero;
-            public final int one;
-            
-            public Count(int zero, int one){
-                this.zero=zero;
-                this.one=one;
-            }
-            public Count add(Count other){
-                return new Count(zero+other.zero,one+other.one);
-            }
-    }
+    public boolean out(int [][]arr, int x, int y, int size){
         
-        private Count count(int offsetX, int offsetY, int size, int [][]arr){
-            int h=size/2;
-            for(int x=offsetX;x<offsetX+size;x++){
-                for(int y=offsetY;y<offsetY+size;y++){
-                    if(arr[y][x]!=arr[offsetY][offsetX]){
-                        return count(offsetX,offsetY,h,arr)
-                            .add(count(offsetX+h,offsetY,h,arr))
-                            .add(count(offsetX,offsetY+h,h,arr))
-                            .add(count(offsetX+h,offsetY+h,h,arr));
-                    }
-                }
+        for(int i=x; i<x+size;i++){
+            for(int j=y;j<y+size;j++){
+                if(arr[x][y]!=arr[i][j])
+                    return false;//같지 않음
             }
-            if(arr[offsetY][offsetX]==1) return new Count(0,1);
-            return new Count(1,0);
-        
         }
+        return true;//다 같음
+    }
     
-    
+    public void quad(int [][]arr, int x, int y, int size){
+        //종료 조건!!
+        //다 같을 경우
+        if(out(arr,x,y,size)){
+            //1인 경우
+            if(arr[x][y]==1) answer[1]++;
+            //0인 경우
+            else answer[0]++;
+            return;
+        }
+        int L=size/2;
+        quad(arr,x,y,L);
+        quad(arr,x+L,y,L);
+        quad(arr,x,y+L,L);
+        quad(arr,x+L,y+L,L);
+    }
     public int[] solution(int[][] arr) {
-        
-        Count count=count(0,0,arr.length,arr);
-        return new int[]{count.zero,count.one};
-        
+        answer = new int[2];
+        quad(arr, 0, 0, arr.length);
+        return answer;
     }
 }
