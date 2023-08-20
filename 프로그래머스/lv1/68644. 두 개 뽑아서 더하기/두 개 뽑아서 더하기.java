@@ -11,7 +11,7 @@ class Solution {
         }
         
         System.out.println(s);
-        return s.stream().mapToInt(Integer::intValue).sorted().toArray();
+        return s.stream().mapToInt(i->i).sorted().toArray();
         
     }
 }
