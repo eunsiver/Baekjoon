@@ -1,14 +1,25 @@
 import java.util.*;
+
 class Solution {
     public String solution(String[] participant, String[] completion) {
-        Arrays.sort(participant);
-        Arrays.sort(completion);
-        int i=0;
-       for(i=0;i<completion.length;i++)
-            if(!participant[i].equals(completion[i]))
+        HashMap<String,Integer> hm= new HashMap<>();
+        
+        for(String s: participant){
+            hm.put(s,hm.getOrDefault(s,0)+1);
+        }
+        for(String s: completion){
+            hm.put(s,hm.get(s)-1);
+        }
+        
+        String answer="";
+        for(String s: hm.keySet()){
+            if(hm.get(s)>0){
+                answer = s;
                 break;
-
-
-        return participant[i];
+            }
+        }
+        
+      
+        return answer;
     }
 }
