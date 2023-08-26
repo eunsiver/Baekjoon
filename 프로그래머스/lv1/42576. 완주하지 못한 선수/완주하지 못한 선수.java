@@ -2,6 +2,9 @@ import java.util.*;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
+        
+        String answer="";
+        
         HashMap<String,Integer> hm= new HashMap<>();
         
         for(String s: participant){
@@ -11,14 +14,12 @@ class Solution {
             hm.put(s,hm.get(s)-1);
         }
         
-        String answer="";
-        for(String s: hm.keySet()){
-            if(hm.get(s)>0){
-                answer = s;
+        for(String key: hm.keySet()){
+            if(hm.get(key)>0){
+                answer = key;
                 break;
             }
         }
-        
       
         return answer;
     }
