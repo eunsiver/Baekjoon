@@ -2,15 +2,14 @@ import java.util.*;
 
 public class Solution {
     public int[] solution(int []arr) {
-        ArrayList<Integer> ar= new ArrayList<>();
-        
-        int k=10;
-        
-        for(int e:arr){
-            
-            if(e!=k) ar.add(e);
-            k=e;
+        List<Integer> li= new ArrayList<>();
+        int el=-1;
+        for(int k: arr){
+            if(el!=k){
+                li.add(k);
+                el=k;
+            }
         }
-        return ar.stream().mapToInt(i->i).toArray();
+        return li.stream().mapToInt(i->i).toArray();
     }
 }
