@@ -1,43 +1,44 @@
+import java.util.stream.*;
 import java.util.*;
 class Solution {
-    int []speeds;
+   
     int ar[];
+    List<Integer> li = new ArrayList<>();
+    
     public int[] solution(int[] progresses, int[] speeds) {
-        this.speeds=speeds;
-        ar=new int[progresses.length];
-        List<Integer> checkAr=new LinkedList<>();
         
-       for(int i=0;i<progresses.length;i++){
-           ar[i]=progresses[progresses.length-i-1];
-       }
+        ar= new int[speeds.length];
+        checkSpeed(progresses,speeds);
+        bapo();
         
-        int k=0;
-        
-        
-        Stack<Integer> st=new Stack<>();
-        for(int i:ar)st.add(i);
-       // System.out.println(st.pop());
-        int i=1;
-       int when;
-        
-       while(!st.isEmpty()){
-           when=checkWhen(st.pop(),k);
-           i=1;
-           while(!st.isEmpty()&&when>=checkWhen(st.peek(),k+1)){
-               i++;
-               k++;
-               int p=st.pop();
-               
-           }
-           checkAr.add(i);
-           k++;
-           //System.out.println(when);
-       
-       }
-        int result[]=checkAr.stream().mapToInt(o->o).toArray();
-        return result;
+        System.out.println(li);
+        return li.stream().mapToInt(i->i).toArray();
     }
-    public int checkWhen(int num, int index){
-        return (100-num)/speeds[index]+((100-num)%speeds[index]==0?0:1);
+    
+    public void bapo(){
+        
+        Deque<Integer> que= new LinkedList<>(Arrays.stream(ar).boxed().collect(Collectors.toList()));
+       
+        
+        for(int i=0;i<ar.length;i++){
+           int k=que.pop();
+            int c=0;
+            while(!que.isEmpty()&&k>=que.peek()){
+                que.pop();
+                c++;
+            }
+            li.add(c+1);
+            i+=c; 
+        }
+    }
+    
+    public void checkSpeed(int[] progresses, int[] speeds){
+        
+        for(int i=0;i<progresses.length;i++){
+            
+            int k=100-progresses[i];
+            ar[i] = k/speeds[i] + (k%speeds[i]==0? 0:1);
+        }
+        
     }
 }
